@@ -705,6 +705,13 @@ export default {
               <option key="in_a_day" value="in_a_day">
                 {{ $t('INBOX_MGMT.ADD.WEBSITE_CHANNEL.REPLY_TIME.IN_A_DAY') }}
               </option>
+              <option key="leave_a_message" value="leave_a_message">
+                {{
+                  $t(
+                    'INBOX_MGMT.ADD.WEBSITE_CHANNEL.REPLY_TIME.LEAVE_A_MESSAGE'
+                  )
+                }}
+              </option>
             </select>
 
             <p class="pb-1 text-sm not-italic text-n-slate-11">
