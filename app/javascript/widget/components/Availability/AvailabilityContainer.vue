@@ -51,13 +51,8 @@ const replyTime = computed(
   () => inboxConfig.value.replyTime || 'in_a_few_minutes'
 );
 
-// If online or in working hours
-const isAvailable = computed(
-  () => isOnline.value || (workingHoursEnabled.value && isInWorkingHours.value)
-);
-
 const headerText = computed(() =>
-  isAvailable.value
+  isOnline.value
     ? availableMessage.value || t('TEAM_AVAILABILITY.ONLINE')
     : unavailableMessage.value || t('TEAM_AVAILABILITY.OFFLINE')
 );
