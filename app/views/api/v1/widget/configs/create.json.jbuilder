@@ -13,6 +13,10 @@ json.website_channel_config do
   json.pre_chat_form_enabled @web_widget.pre_chat_form_enabled
   json.pre_chat_form_options @web_widget.pre_chat_form_options
   json.reply_time @web_widget.reply_time
+  json.online_title @web_widget.online_title
+  json.online_status @web_widget.online_status
+  json.offline_title @web_widget.offline_title
+  json.offline_status @web_widget.offline_status
   json.timezone @web_widget.inbox.timezone
   json.utc_off_set ActiveSupport::TimeZone[@web_widget.inbox.timezone].now.formatted_offset
   json.website_name @web_widget.inbox.name
