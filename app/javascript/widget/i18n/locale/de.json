@@ -24,7 +24,7 @@
   },
   "REPLY_TIME": {
     "IN_A_FEW_MINUTES": "Wir antworten üblicherweise innerhalb weniger Minuten",
-    "IN_A_FEW_HOURS": "Wir antworten üblicherweise umgehend",
+    "IN_A_FEW_HOURS": "Wir antworten üblicherweise umgehend.",
     "IN_A_DAY": "Wir antworten üblicherweise innerhalb eines Tages",
     "LEAVE_A_MESSAGE": "Gerade ist leider niemand online, Du kannst aber gerne eine Nachricht hinterlassen. Wie beantworten sie dann so bald wie möglich.",
     "BACK_IN_HOURS": "We will be back online in {n} hour | We will be back online in {n} hours",
