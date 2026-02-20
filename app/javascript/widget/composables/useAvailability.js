@@ -31,6 +31,10 @@ export function useAvailability(agents = []) {
       channelConfig.value.timezone ||
       DEFAULT_TIMEZONE,
     replyTime: channelConfig.value.replyTime || DEFAULT_REPLY_TIME,
+    onlineTitle: channelConfig.value.onlineTitle || '',
+    onlineStatus: channelConfig.value.onlineStatus || '',
+    offlineTitle: channelConfig.value.offlineTitle || '',
+    offlineStatus: channelConfig.value.offlineStatus || '',
   }));
 
   const currentTime = computed(() => new Date());

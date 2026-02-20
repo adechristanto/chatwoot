@@ -33,6 +33,10 @@ const props = defineProps({
     type: Boolean,
     required: true,
   },
+  overrideText: {
+    type: String,
+    default: '',
+  },
 });
 
 const MINUTE_ROUNDING_INTERVAL = 5;
@@ -111,8 +115,13 @@ const formattedOpeningTime = computed(() => {
 
 <template>
   <span>
+    <!-- 0. Custom override text from inbox settings -->
+    <template v-if="overrideText">
+      {{ overrideText }}
+    </template>
+
     <!-- 1. If currently in working hours, show reply time -->
-    <template v-if="isInWorkingHours">
+    <template v-else-if="isInWorkingHours">
       {{ replyTimeMessage }}
     </template>
 

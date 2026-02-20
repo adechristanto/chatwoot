@@ -1,7 +1,6 @@
 <script setup>
 import { computed, toRef } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useMapGetter } from 'dashboard/composables/store.js';
 import GroupedAvatars from 'widget/components/GroupedAvatars.vue';
 import AvailabilityText from './AvailabilityText.vue';
 import { useAvailability } from 'widget/composables/useAvailability';
@@ -26,9 +25,6 @@ const props = defineProps({
 });
 
 const { t } = useI18n();
-
-const availableMessage = useMapGetter('appConfig/getAvailableMessage');
-const unavailableMessage = useMapGetter('appConfig/getUnavailableMessage');
 
 // Pass toRef(props, 'agents') instead of props.agents to maintain reactivity
 // when the parent component's agents prop updates (e.g., after API response)
@@ -58,8 +54,14 @@ const isAvailable = computed(
 
 const headerText = computed(() =>
   isAvailable.value
-    ? availableMessage.value || t('TEAM_AVAILABILITY.ONLINE')
-    : unavailableMessage.value || t('TEAM_AVAILABILITY.OFFLINE')
+    ? inboxConfig.value.onlineTitle || t('TEAM_AVAILABILITY.ONLINE')
+    : inboxConfig.value.offlineTitle || t('TEAM_AVAILABILITY.OFFLINE')
+);
+
+const subtitleOverride = computed(() =>
+  isAvailable.value
+    ? inboxConfig.value.onlineStatus || ''
+    : inboxConfig.value.offlineStatus || ''
 );
 </script>
 
@@ -79,6 +81,7 @@ const headerText = computed(() =>
         :reply-time="replyTime"
         :is-online="isOnline"
         :is-in-working-hours="isInWorkingHours"
+        :override-text="subtitleOverride"
         :class="textClasses"
         class="text-n-slate-11"
       />

@@ -98,6 +98,22 @@
           "LABEL": "Welcome Tagline",
           "PLACEHOLDER": "We make it simple to connect with us. Ask us anything, or share your feedback."
         },
+        "ONLINE_TITLE": {
+          "LABEL": "Online Status Heading",
+          "PLACEHOLDER": "We are online."
+        },
+        "ONLINE_STATUS": {
+          "LABEL": "Online Status Message",
+          "PLACEHOLDER": "Typically replies immediately."
+        },
+        "OFFLINE_TITLE": {
+          "LABEL": "Offline Status Heading",
+          "PLACEHOLDER": "We are currently unavailable."
+        },
+        "OFFLINE_STATUS": {
+          "LABEL": "Offline Status Message",
+          "PLACEHOLDER": "Typically replies immediately."
+        },
         "CHANNEL_GREETING_MESSAGE": {
           "LABEL": "Channel greeting message",
           "PLACEHOLDER": "Acme Inc typically replies in a few hours."

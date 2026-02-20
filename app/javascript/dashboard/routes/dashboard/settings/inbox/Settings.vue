@@ -91,6 +91,10 @@ export default {
       channelWelcomeTagline: '',
       selectedFeatureFlags: [],
       replyTime: '',
+      channelOnlineTitle: '',
+      channelOnlineStatus: '',
+      channelOfflineTitle: '',
+      channelOfflineStatus: '',
       selectedTabIndex: 0,
       selectedPortalSlug: '',
       showBusinessNameInput: false,
@@ -382,6 +386,10 @@ export default {
       this.channelWelcomeTagline = this.inbox.welcome_tagline || '';
       this.selectedFeatureFlags = this.inbox.selected_feature_flags || [];
       this.replyTime = this.inbox.reply_time;
+      this.channelOnlineTitle = this.inbox.online_title || '';
+      this.channelOnlineStatus = this.inbox.online_status || '';
+      this.channelOfflineTitle = this.inbox.offline_title || '';
+      this.channelOfflineStatus = this.inbox.offline_status || '';
       this.locktoSingleConversation = this.inbox.lock_to_single_conversation;
       this.selectedPortalSlug = this.inbox.help_center
         ? this.inbox.help_center.slug
@@ -491,6 +499,10 @@ export default {
             selectedFeatureFlags: this.selectedFeatureFlags,
             reply_time: this.replyTime || 'in_a_few_minutes',
             continuity_via_email: this.continuityViaEmail,
+            online_title: this.channelOnlineTitle || '',
+            online_status: this.channelOnlineStatus || '',
+            offline_title: this.channelOfflineTitle || '',
+            offline_status: this.channelOfflineStatus || '',
           },
         };
         if (this.avatarFile) {
@@ -918,33 +930,58 @@ export default {
                 />
               </SettingsFieldSection>
               <SettingsFieldSection
-                :label="$t('INBOX_MGMT.ADD.WEBSITE_CHANNEL.REPLY_TIME.TITLE')"
-                :help-text="
-                  $t('INBOX_MGMT.ADD.WEBSITE_CHANNEL.REPLY_TIME.HELP_TEXT')
-                "
+                :label="$t('INBOX_MGMT.ADD.WEBSITE_CHANNEL.ONLINE_TITLE.LABEL')"
               >
-                <SelectInput
-                  v-model="replyTime"
-                  :options="[
-                    {
-                      value: 'in_a_few_minutes',
-                      label: $t(
-                        'INBOX_MGMT.ADD.WEBSITE_CHANNEL.REPLY_TIME.IN_A_FEW_MINUTES'
-                      ),
-                    },
-                    {
-                      value: 'in_a_few_hours',
-                      label: $t(
-                        'INBOX_MGMT.ADD.WEBSITE_CHANNEL.REPLY_TIME.IN_A_FEW_HOURS'
-                      ),
-                    },
-                    {
-                      value: 'in_a_day',
-                      label: $t(
-                        'INBOX_MGMT.ADD.WEBSITE_CHANNEL.REPLY_TIME.IN_A_DAY'
-                      ),
-                    },
-                  ]"
+                <woot-input
+                  v-model="channelOnlineTitle"
+                  class="[&>input]:!mb-0"
+                  :placeholder="
+                    $t(
+                      'INBOX_MGMT.ADD.WEBSITE_CHANNEL.ONLINE_TITLE.PLACEHOLDER'
+                    )
+                  "
+                />
+              </SettingsFieldSection>
+
+              <SettingsFieldSection
+                :label="$t('INBOX_MGMT.ADD.WEBSITE_CHANNEL.ONLINE_STATUS.LABEL')"
+              >
+                <woot-input
+                  v-model="channelOnlineStatus"
+                  class="[&>input]:!mb-0"
+                  :placeholder="
+                    $t(
+                      'INBOX_MGMT.ADD.WEBSITE_CHANNEL.ONLINE_STATUS.PLACEHOLDER'
+                    )
+                  "
+                />
+              </SettingsFieldSection>
+
+              <SettingsFieldSection
+                :label="$t('INBOX_MGMT.ADD.WEBSITE_CHANNEL.OFFLINE_TITLE.LABEL')"
+              >
+                <woot-input
+                  v-model="channelOfflineTitle"
+                  class="[&>input]:!mb-0"
+                  :placeholder="
+                    $t(
+                      'INBOX_MGMT.ADD.WEBSITE_CHANNEL.OFFLINE_TITLE.PLACEHOLDER'
+                    )
+                  "
+                />
+              </SettingsFieldSection>
+
+              <SettingsFieldSection
+                :label="$t('INBOX_MGMT.ADD.WEBSITE_CHANNEL.OFFLINE_STATUS.LABEL')"
+              >
+                <woot-input
+                  v-model="channelOfflineStatus"
+                  class="[&>input]:!mb-0"
+                  :placeholder="
+                    $t(
+                      'INBOX_MGMT.ADD.WEBSITE_CHANNEL.OFFLINE_STATUS.PLACEHOLDER'
+                    )
+                  "
                 />
               </SettingsFieldSection>
 
