@@ -4,10 +4,10 @@ import AddCanned from './AddCanned.vue';
 import EditCanned from './EditCanned.vue';
 import SettingsLayout from '../SettingsLayout.vue';
 import BaseSettingsHeader from '../components/BaseSettingsHeader.vue';
-import { computed, onMounted, ref, defineOptions } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useStoreGetters, useStore } from 'dashboard/composables/store';
-import { picoSearch } from '@scmmishra/pico-search';
+import { picoSearch } from '@chatwoot/pico-search';
 import { useMessageFormatter } from 'shared/composables/useMessageFormatter';
 
 import Button from 'dashboard/components-next/button/Button.vue';
@@ -45,7 +45,10 @@ const records = computed(() =>
 const filteredRecords = computed(() => {
   const query = searchQuery.value.trim();
   if (!query) return records.value;
-  return picoSearch(records.value, query, ['short_code', 'content']);
+  return picoSearch(records.value, query, [
+    { name: 'short_code', weight: 4 },
+    'content',
+  ]);
 });
 const uiFlags = computed(() => getters.getUIFlags.value);
 

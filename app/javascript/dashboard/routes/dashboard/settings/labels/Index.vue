@@ -3,7 +3,7 @@ import { useAlert } from 'dashboard/composables';
 import { computed, onBeforeMount, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useStoreGetters, useStore } from 'dashboard/composables/store';
-import { picoSearch } from '@scmmishra/pico-search';
+import { picoSearch } from '@chatwoot/pico-search';
 
 import AddLabel from './AddLabel.vue';
 import EditLabel from './EditLabel.vue';
@@ -32,7 +32,10 @@ const records = computed(() => getters['labels/getLabels'].value);
 const filteredRecords = computed(() => {
   const query = searchQuery.value.trim();
   if (!query) return records.value;
-  return picoSearch(records.value, query, ['title', 'description']);
+  return picoSearch(records.value, query, [
+    { name: 'title', weight: 4 },
+    'description',
+  ]);
 });
 const uiFlags = computed(() => getters['labels/getUIFlags'].value);
 
@@ -135,13 +138,13 @@ onBeforeMount(() => {
         <template #row="{ items }">
           <BaseTableRow v-for="label in items" :key="label.title" :item="label">
             <template #default>
-              <BaseTableCell>
+              <BaseTableCell class="whitespace-nowrap">
                 <span class="text-body-main text-n-slate-12">
                   {{ label.title }}
                 </span>
               </BaseTableCell>
 
-              <BaseTableCell>
+              <BaseTableCell class="w-full">
                 <span class="text-body-main text-n-slate-11">
                   {{ label.description }}
                 </span>
