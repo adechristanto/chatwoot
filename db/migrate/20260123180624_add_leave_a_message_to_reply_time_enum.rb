@@ -9,7 +9,7 @@ class AddLeaveAMessageToReplyTimeEnum < ActiveRecord::Migration[7.0]
 
   def down
     # Reset any inboxes using the new enum value to default
-    execute <<-SQL
+    execute <<-SQL.squish
       UPDATE channel_web_widgets
       SET reply_time = 0
       WHERE reply_time = 3;
